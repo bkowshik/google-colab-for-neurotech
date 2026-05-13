@@ -1,0 +1,34 @@
+# Common {.unnumbered}
+
+Steps and tooling shared across every project in this book.
+
+## Mount Google Drive
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+## Filesystem
+
+- `/content` is the default working directory and where you land when a notebook starts. It typically has around `100+ GB` of free disk space (varies by runtime type). Anything here is ephemeral and gets wiped when the runtime disconnects.
+- Home directory `/root` is writable too, but `/content` is the convention.
+- `/tmp` is also writable and ephemeral, but smaller. Good for temporary scratch files.
+- `/content/drive/MyDrive` is available after you mount Google Drive. Files here persist across sessions since they live in your Drive (subject to your Drive quota).
+
+```python
+!df -h /content
+
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         108G   22G   86G  21% /
+```
+
+## Retina plots
+
+```python
+%config InlineBackend.figure_format = 'retina'
+```
+
+## VS Code Colab extension
+
+The [Google Colab VS Code extension](https://github.com/googlecolab/colab-vscode) connects VS Code to Colab's hosted Jupyter runtime, giving access to free GPUs and TPUs without leaving the editor.

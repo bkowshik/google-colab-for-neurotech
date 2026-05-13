@@ -2,9 +2,22 @@
 
 NeuroAI is an integrated Python suite for neuroscience and AI workflows, developed at Meta's Fundamental AI Research (FAIR) lab. It bridges raw neural recordings and modern deep learning models through four interconnected packages [@neuroai2026]:
 
-- **NeuralSet** — data pipeline and tensor preparation, turning neural and stimulus data into AI-ready tensors.
-- **NeuralFetch** — dataset discovery and curation across public neuroscience repositories.
-- **NeuralTrain** — training utilities for deep learning models on neural data.
-- **NeuralBench** — standardized benchmarking for brain foundation models.
 
-The suite supports a range of neuroimaging modalities including EEG, MEG, and fMRI, and is designed around modular, reusable components so that neuroscientists and ML researchers can share a common substrate for brain-data modeling.
+## Set environment variables
+
+```python
+import os
+os.environ["NEURALFETCH_THINGS_PASSWORD"] = "xxx"
+```
+
+## Install from the GitHub main branch
+
+```bash
+!pip install "neuralset[all] @ git+https://github.com/facebookresearch/neuroai.git#subdirectory=neuralset-repo"
+```
+
+## Copy data to personal Google Drive
+
+```bash
+!rsync -ah --info=progress2 --stats /content/data/ /content/drive/MyDrive/v2/neuroai/data/
+```

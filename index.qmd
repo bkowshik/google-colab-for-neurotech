@@ -1,5 +1,27 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+A collection of notes and recipes for running neurotechnology workflows on [Google Colab](https://colab.research.google.com/) — covering setup, data handling, and project-specific pipelines like Meta's NeuroAI suite.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## Why Google Colab
+
+The choice of Colab as the default substrate is deliberate — the principles below explain why.
+
+### Data lives near the compute
+
+Neuro datasets are large (EEG, MEG, fMRI archives routinely run into tens or hundreds of GB). Downloading them to a laptop is bandwidth-bound and wastes local disk. On Colab the data is pulled directly into a cloud VM that sits next to Google's network, so the same download is faster and free of local storage pressure.
+
+### Free GPU / TPU runtime
+
+Brain foundation models, deep decoders, and most modern neuro-AI pipelines need a GPU. Colab provides one for free, with TPU and higher-tier GPUs available on paid plans. There is no driver install, no CUDA mismatch — the runtime comes pre-configured.
+
+### Zero local setup
+
+Python, PyTorch, JAX, NumPy, SciPy, scikit-learn, and most of the scientific stack ship pre-installed. The notebook environment is identical across machines, which removes the "works on my laptop" problem and makes recipes reproducible.
+
+### Shareable by default
+
+A Colab notebook is a single Drive file. It can be opened, copied, or shared with a link, which makes collaboration with neuroscientists, students, and reviewers trivial — no local environment to replicate.
+
+### Ephemeral, by design
+
+Runtimes are wiped on disconnect. This forces every notebook to be re-runnable from a clean state, which is exactly the discipline you want for scientific work. Persistent state goes to Google Drive; everything else is reproducible from the cell.
