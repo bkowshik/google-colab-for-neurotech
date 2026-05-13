@@ -16,7 +16,7 @@ drive.mount('/content/drive')
 - `/tmp` is also writable and ephemeral, but smaller. Good for temporary scratch files.
 - `/content/drive/MyDrive` is available after you mount Google Drive. Files here persist across sessions since they live in your Drive (subject to your Drive quota).
 
-```python
+```bash
 !df -h /content
 
 Filesystem      Size  Used Avail Use% Mounted on
