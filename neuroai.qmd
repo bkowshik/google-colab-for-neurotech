@@ -1,7 +1,6 @@
 # NeuroAI {.unnumbered}
 
-NeuroAI is an integrated Python suite for neuroscience and AI workflows, developed at Meta's Fundamental AI Research (FAIR) lab. It bridges raw neural recordings and modern deep learning models through four interconnected packages [@neuroai2026]:
-
+NeuroAI is an integrated Python suite for neuroscience and AI workflows, developed at Meta AI Research. It bridges raw neural recordings and modern deep learning models through four interconnected packages — NeuralSet, NeuralFetch, NeuralTrain, and NeuralBench [@neuroai2026].
 
 ## Set environment variables
 
