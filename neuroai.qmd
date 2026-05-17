@@ -2,6 +2,9 @@
 
 NeuroAI is an integrated Python suite for neuroscience and AI workflows, developed at Meta AI Research. It bridges raw neural recordings and modern deep learning models through four interconnected packages — NeuralSet, NeuralFetch, NeuralTrain, and NeuralBench [@neuroai2026].
 
+- Source: [github.com/facebookresearch/neuroai](https://github.com/facebookresearch/neuroai/)
+- Docs: [facebookresearch.github.io/neuroai](https://facebookresearch.github.io/neuroai/)
+
 ## Set environment variables
 
 ```python
@@ -9,11 +12,29 @@ import os
 os.environ["NEURALFETCH_THINGS_PASSWORD"] = "xxx"
 ```
 
-## Install from the GitHub main branch
+## Install
+
+From PyPI (recommended — the latest tagged release):
 
 ```bash
-!pip install "neuralset[all] @ git+https://github.com/facebookresearch/neuroai.git#subdirectory=neuralset-repo"
+!pip install --upgrade "neuralset[all]"
 ```
+
+From the GitHub main branch (for unreleased changes):
+
+```bash
+!pip install --upgrade "neuralset[all] @ git+https://github.com/facebookresearch/neuroai.git#subdirectory=neuralset-repo"
+```
+
+### Why `--upgrade`
+
+Colab images come with a large set of pre-installed packages — NumPy `2.0.2`, for example. Without `--upgrade`, pip's resolver leaves any already-installed package in place as long as it nominally satisfies a requirement, even when `neuralset` and its transitive deps (SciPy, scikit-learn) were built against a newer NumPy. The mismatch surfaces deep in the import chain:
+
+```
+ImportError: cannot import name '_center' from 'numpy._core.umath'
+```
+
+With `--upgrade`, pip honors the version constraints declared in `neuralset`'s `pyproject.toml` and bumps NumPy (and anything else) to a compatible version. After the install finishes, restart the Colab runtime once so the kernel picks up the new binaries.
 
 ## Copy data to personal Google Drive
 
